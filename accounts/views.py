@@ -38,7 +38,7 @@ def signup(request):
         else:
             messages.warning(
                 request, 'Password and Confirm password has to be same')
-            return redirect('register')
+            return redirect('signup')
 
     return render(request, 'accounts/signup.html')
 
