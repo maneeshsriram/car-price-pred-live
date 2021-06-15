@@ -33,7 +33,7 @@ SECRET_KEY = 'l78g9*aayk*d77(k=uonh8dbzb^aqwp&i!6i_5m+6@l(b$84#!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['car-price-prediction-django.herokuapp.com']
 
 
 # Application definition
