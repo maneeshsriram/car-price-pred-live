@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="text-center">
+    <h1 class="my-4 btn btn-success px-5" style="font-size: 1.8rem;">Project Overview</h1>
+</div>
+
+<p class="container" style="font-size: 1.5rem;">
+    Buying a new car is a still a dream for a large section of the society. With the increasing price and taxes,
+    buying a new vehicle becomes even more difficult. With no option left, people have to switch to buy a second hand
+    car.
+    <br />
+    But the customers can be exploited by fixing an unrealistic price. ​Therefore, rises an absolute necessity
+    of a used car price prediction system to effectively determine the worthiness of the car using a variety of
+    features.​
+    <br /> <br />
+    This project mainly focuses on predicting the worthiness of the used car. The users of the website can be
+    customers, who would want to know the price of the car they are about to buy or the sellers, who would
+    want to know at what price their car can be sold.
+</p>
+
+<div class="text-center mt-5 bg-dark">
+    <h1 class="mt-4 btn btn-success px-5" style="font-size: 1.8rem;">Our Team</h1>
+</div>
+
+<div class="row text-center bg-dark text-light p-5 pt-3">
+    <div class="col-sm">
+        <img src="{% static 'images/maneesh.jpg' %}" alt="" style="height: 250px;">
+        <h3>Maneesh Sriram</h3>
+        <h5 class="text-secondary">Fullstack developer aspirant</h5>
+        <h5 class="text-secondary">PES University</h5>
+    </div>
+    <div class="col-sm">
+        <img src="{% static 'images/chand.jpg' %}" alt="" style="height: 250px;">
+        <h3>Chand Kumar</h3>
+        <h5 class="text-secondary">Data scientist aspirant</h5>
+        <h5 class="text-secondary">PES University</h5>
+    </div>
+</div>
+
+{% endblock %}

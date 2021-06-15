@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="text-center bg-warning py-5" style="min-height: 92vh;">
+    <p class="btn btn-primary w-50 p-3 text-light mr-2">RESULT</p>
+    <img src="{% static './images/Money.svg' %}" alt="" style="height: 50vh;">
+    <h1 class="text-dark display-4 pt-5 mt-5">The predicted car price is around {{result}} lakh rupees</h1>
+</div>
+
+
+{% endblock %}

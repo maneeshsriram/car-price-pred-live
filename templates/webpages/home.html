@@ -1,0 +1,809 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<img src="{% static './images/Carss.jpg' %}"
+    style="object-fit: contain; max-width: 100vw; opacity: 60%; position: absolute; z-index: -10;" class="homeBack">
+
+<div class="container" style="height: 115vh;">
+    <div class="bg-dark mt-5 py-5 container rounded">
+        <h1 class="text-center text-warning">Check the worthiness of your car!</h1>
+        <h3 class="text-center text-light">Designed for a smooth journey...</h3>
+    </div>
+
+    <div class="container text-center py-5">
+        <a href="#form">
+            <button class="btn btn-large btn-outline-dark w-md-50" style="font-size: 2rem">Click Here To Get
+                Started! </button>
+        </a>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Form -->
+<div class="container" id="form">
+    <form class="px-md-5 mx-md-5" action="{% url 'result' %}" method="GET">
+
+        {% csrf_token %}
+
+        <h2 class="my-5 text-danger ">
+            Please input the below fields to predict the worthiness of the car
+        </h2>
+
+        <div class="my-4">
+            <h5 class="form-label" style="display: inline">Car Company</h5>
+            <p style="display: inline ">(Please select)</p>
+            <select onchange="change()" name="car" required class="form-select mt-2" id="car">
+                <option value="Audi A3">Audi A3</option>
+                <option value="Audi A4">Audi A4</option>
+                <option value="Audi A6">Audi A6</option>
+                <option value="Audi A7">Audi A7</option>
+                <option value="Audi A8">Audi A8</option>
+                <option value="Audi Q3">Audi Q3</option>
+                <option value="Audi Q5">Audi Q5</option>
+                <option value="Audi Q7">Audi Q7</option>
+                <option value="Audi RS5">Audi RS5</option>
+                <option value="Audi TT">Audi TT</option>
+                <option value="BMW 1">BMW 1</option>
+                <option value="BMW 3">BMW 3</option>
+                <option value="BMW 5">BMW 5</option>
+                <option value="BMW 6">BMW 6</option>
+                <option value="BMW 7">BMW 7</option>
+                <option value="BMW X1">BMW X1</option>
+                <option value="BMW X3">BMW X3</option>
+                <option value="BMW X5">BMW X5</option>
+                <option value="BMW X6">BMW X6</option>
+                <option value="BMW Z4">BMW Z4</option>
+                <option value="Bentley Continental">Bentley Continental</option>
+                <option value="Chevrolet Aveo">Chevrolet Aveo</option>
+                <option value="Chevrolet Beat">Chevrolet Beat</option>
+                <option value="Chevrolet Captiva">Chevrolet Captiva</option>
+                <option value="Chevrolet Cruze">Chevrolet Cruze</option>
+                <option value="Chevrolet Enjoy">Chevrolet Enjoy</option>
+                <option value="Chevrolet Optra">Chevrolet Optra</option>
+                <option value="Chevrolet Sail">Chevrolet Sail</option>
+                <option value="Chevrolet Spark">Chevrolet Spark</option>
+                <option value="Chevrolet Tavera">Chevrolet Tavera</option>
+                <option value="Datsun GO">Datsun GO</option>
+                <option value="Datsun Red">Datsun Redi</option>
+                <option value="Datsun redi-GO">Datsun redi-GO</option>
+                <option value="Fiat Avventura">Fiat Avventura</option>
+                <option value="Fiat Grande">Fiat Grande</option>
+                <option value="Fiat Linea">Fiat Linea</option>
+                <option value="Fiat Petra">Fiat Petra</option>
+                <option value="Fiat Punto">Fiat Punto</option>
+                <option value="Fiat Siena">Fiat Siena</option>
+                <option value="Force One">Force One</option>
+                <option value="Ford Aspire">Ford Aspire</option>
+                <option value="Ford Classic">Ford Classic</option>
+                <option value="Ford Ecosport">Ford Ecosport</option>
+                <option value="Ford Endeavour">Ford Endeavour</option>
+                <option value="Ford Fiesta">Ford Fiesta</option>
+                <option value="Ford Figo">Ford Figo</option>
+                <option value="Ford Freestyle">Ford Freestyle</option>
+                <option value="Ford Fusion">Ford Fusion</option>
+                <option value="Ford Ikon">Ford Ikon</option>
+                <option value="Ford Mustang">Ford Mustang</option>
+                <option value="Honda Accord">Honda Accord</option>
+                <option value="Honda Amaze">Honda Amaze</option>
+                <option value="Honda BR-V">Honda BR-V</option>
+                <option value="Honda BRV">Honda BRV</option>
+                <option value="Honda Brio">Honda Brio</option>
+                <option value="Honda CR-V">Honda CR-V</option>
+                <option value="Honda City">Honda City</option>
+                <option value="Honda Civic">Honda Civic</option>
+                <option value="Honda Jazz">Honda Jazz</option>
+                <option value="Honda Mobilio">Honda Mobilio</option>
+                <option value="Honda WR-V">Honda WR-V</option>
+                <option value="Honda WRV">Honda WRV</option>
+                <option value="Hyundai Accent">Hyundai Accent</option>
+                <option value="Hyundai Creta">Hyundai Creta</option>
+                <option value="Hyundai EON">Hyundai EON</option>
+                <option value="Hyundai Elantra">Hyundai Elantra</option>
+                <option value="Hyundai Elite">Hyundai Elite</option>
+                <option value="Hyundai Getz">Hyundai Getz</option>
+                <option value="Hyundai Grand">Hyundai Grand</option>
+                <option value="Hyundai Santa">Hyundai Santa</option>
+                <option value="Hyundai Santro">Hyundai Santro</option>
+                <option value="Hyundai Sonata">Hyundai Sonata</option>
+                <option value="Hyundai Tucson">Hyundai Tucson</option>
+                <option value="Hyundai Verna">Hyundai Verna</option>
+                <option value="Hyundai Xcent">Hyundai Xcent</option>
+                <option value="Hyundai i10">Hyundai i10</option>
+                <option value="Hyundai i20">Hyundai i20</option>
+                <option value="ISUZU D-MAX">ISUZU D-MAX</option>
+                <option value="Isuzu MUX">Isuzu MUX</option>
+                <option value="Jaguar F">Jaguar F</option>
+                <option value="Jaguar XE">Jaguar XE</option>
+                <option value="Jaguar XF">Jaguar XF</option>
+                <option value="Jaguar XJ">Jaguar XJ</option>
+                <option value="Jeep Compass">Jeep Compass</option>
+                <option value="Lamborghini Gallardo">Lamborghini Gallardo</option>
+                <option value="Land Rover">Land Rover</option>
+                <option value="Mahindra Bolero">Mahindra Bolero</option>
+                <option value="Mahindra Jeep">Mahindra Jeep</option>
+                <option value="Mahindra KUV">Mahindra KUV</option>
+                <option value="Mahindra Logan">Mahindra Logan</option>
+                <option value="Mahindra NuvoSport">Mahindra NuvoSport</option>
+                <option value="Mahindra Quanto">Mahindra Quanto</option>
+                <option value="Mahindra Renault">Mahindra Renault</option>
+                <option value="Mahindra Scorpio">Mahindra Scorpio</option>
+                <option value="Mahindra Ssangyong">Mahindra Ssangyong</option>
+                <option value="Mahindra TUV">Mahindra TUV</option>
+                <option value="Mahindra Thar">Mahindra Thar</option>
+                <option value="Mahindra Verito">Mahindra Verito</option>
+                <option value="Mahindra XUV300">Mahindra XUV300</option>
+                <option value="Mahindra XUV500">Mahindra XUV500</option>
+                <option value="Mahindra Xylo">Mahindra Xylo</option>
+                <option value="Maruti 1000">Maruti 1000</option>
+                <option value="Maruti 800">Maruti 800</option>
+                <option value="Maruti A-Star">Maruti A-Star</option>
+                <option value="Maruti Alto">Maruti Alto</option>
+                <option value="Maruti Baleno">Maruti Baleno</option>
+                <option value="Maruti Celerio">Maruti Celerio</option>
+                <option value="Maruti Ciaz">Maruti Ciaz</option>
+                <option value="Maruti Dzire">Maruti Dzire</option>
+                <option value="Maruti Eeco">Maruti Eeco</option>
+                <option value="Maruti Ertiga">Maruti Ertiga</option>
+                <option value="Maruti Esteem">Maruti Esteem</option>
+                <option value="Maruti Grand">Maruti Grand</option>
+                <option value="Maruti Ignis">Maruti Ignis</option>
+                <option value="Maruti Omni">Maruti Omni</option>
+                <option value="Maruti Ritz">Maruti Ritz</option>
+                <option value="Maruti S">Maruti S</option>
+                <option value="Maruti S-Cross">Maruti S-Cross</option>
+                <option value="Maruti S-Cross">Maruti SX4</option>
+                <option value="Maruti Swift">Maruti Swift</option>
+                <option value="Maruti Versa">Maruti Versa</option>
+                <option value="Maruti Vitara">Maruti Vitara</option>
+                <option value="Maruti Wagon">Maruti Wagon</option>
+                <option value="Maruti Zen">Maruti Zen</option>
+                <option value="Mercedes-Benz A">Mercedes-Benz A</option>
+                <option value="Mercedes-Benz B">Mercedes-Benz B</option>
+                <option value="Mercedes-Benz C-Class">Mercedes-Benz C-Class</option>
+                <option value="Mercedes-Benz CLA">Mercedes-Benz CLA</option>
+                <option value="Mercedes-Benz CLS-Class">Mercedes-Benz CLS-Class</option>
+                <option value="Mercedes-Benz E-Class">Mercedes-Benz E-Class</option>
+                <option value="Mercedes-Benz GL-Class">Mercedes-Benz GL-Class</option>
+                <option value="Mercedes-Benz GLA">Mercedes-Benz GLA</option>
+                <option value="Mercedes-Benz GLC">Mercedes-Benz GLC</option>
+                <option value="Mercedes-Benz GLE">Mercedes-Benz GLE</option>
+                <option value="Mercedes-Benz GLS">Mercedes-Benz GLS</option>
+                <option value="Mercedes-Benz M-Class">Mercedes-Benz M-Class</option>
+                <option value="Mercedes-Benz New">Mercedes-Benz New</option>
+                <option value="Mercedes-Benz R-Class">Mercedes-Benz R-Class</option>
+                <option value="Mercedes-Benz S">Mercedes-Benz S</option>
+                <option value="Mercedes-Benz S-Class">Mercedes-Benz S-Class</option>
+                <option value="Mercedes-Benz SL-Class">Mercedes-Benz SL-Class</option>
+                <option value="Mercedes-Benz SLC">Mercedes-Benz SLC</option>
+                <option value="Mercedes-Benz SLK-Class">Mercedes-Benz SLK-Class</option>
+                <option value="Mini Clubman">Mini Clubman</option>
+                <option value="Mini Coope">Mini Cooper</option>
+                <option value="Mini Countryman">Mini Countryman</option>
+                <option value="Mitsubishi Cedia">Mitsubishi Cedia</option>
+                <option value="Mitsubishi Lancer">Mitsubishi Lancer</option>
+                <option value="Mitsubishi Montero">Mitsubishi Montero</option>
+                <option value="Mitsubishi Outlander">Mitsubishi Outlander</option>
+                <option value="Mitsubishi Pajero">Mitsubishi Pajero</option>
+                <option value="Nissan Evalia">Nissan Evalia</option>
+                <option value="Nissan Micra">Nissan Micra</option>
+                <option value="Nissan Sunny">Nissan Sunny</option>
+                <option value="Nissan Teana">Nissan Teana</option>
+                <option value="Nissan Terrano">Nissan Terrano</option>
+                <option value="Nissan X-Trail">Nissan X-Trail</option>
+                <option value="Porsche Boxster">Porsche Boxster</option>
+                <option value="Porsche Cayenne">Porsche Cayenne</option>
+                <option value="Porsche Cayman">Porsche Cayman</option>
+                <option value="Porsche Panamera">Porsche Panamera</option>
+                <option value="Renault Captur">Renault Captur</option>
+                <option value="Renault Duster">Renault Duster</option>
+                <option value="Renault Fluence">Renault Fluence</option>
+                <option value="Renault KWID">Renault KWID</option>
+                <option value="Renault Koleos">Renault Koleos</option>
+                <option value="Renault Lodgy">Renault Lodgy</option>
+                <option value="Renault Pulse">Renault Pulse</option>
+                <option value="Renault Scala">Renault Scala</option>
+                <option value="Skoda Fabia">Skoda Fabia</option>
+                <option value="Skoda Laura">Skoda Laura</option>
+                <option value="Skoda Octavia">Skoda Octavia</option>
+                <option value="Skoda Rapid">Skoda Rapid</option>
+                <option value="Skoda Superb">Skoda Superb</option>
+                <option value="Skoda Yeti">Skoda Yeti</option>
+                <option value="Smart Fortwo">Smart Fortwo</option>
+                <option value="Tata Bolt">Tata Bolt</option>
+                <option value="Tata Hexa">Tata Hexa</option>
+                <option value="Tata Indica">Tata Indica</option>
+                <option value="Tata Indigo">Tata Indigo</option>
+                <option value="Tata Manza">Tata Manza</option>
+                <option value="Tata Nano">Tata Nano</option>
+                <option value="Tata New">Tata New</option>
+                <option value="Tata Nexon">Tata Nexon</option>
+                <option value="Tata Safari">Tata Safari</option>
+                <option value="Tata Sumo">Tata Sumo</option>
+                <option value="Tata Tiago">Tata Tiago</option>
+                <option value="Tata Tigor">Tata Tigor</option>
+                <option value="Tata Venture">Tata Venture</option>
+                <option value="Tata Xenon">Tata Xenon</option>
+                <option value="Tata Zest">Tata Zest</option>
+                <option value="Toyota Camry">Toyota Camry</option>
+                <option value="Toyota Corolla">Toyota Corolla</option>
+                <option value="Toyota Etios">Toyota Etios</option>
+                <option value="Toyota Fortuner">Toyota Fortuner</option>
+                <option value="Toyota Innova">Toyota Innova</option>
+                <option value="Toyota Platinum">Toyota Platinum</option>
+                <option value="Toyota Qualis">Toyota Qualis</option>
+                <option value="Volkswagen Ameo">Volkswagen Ameo</option>
+                <option value="Volkswagen Beetle">Volkswagen Beetle</option>
+                <option value="Volkswagen CrossPolo">Volkswagen CrossPolo</option>
+                <option value="Volkswagen Jetta">Volkswagen Jetta</option>
+                <option value="Volkswagen Passat">Volkswagen Passat</option>
+                <option value="Volkswagen Polo">Volkswagen Polo</option>
+                <option value="Volkswagen Tiguan">Volkswagen Tiguan</option>
+                <option value="Volkswagen Vento">Volkswagen Vento</option>
+                <option value="Volvo S60">Volvo S60</option>
+                <option value="Volvo S80">Volvo S80</option>
+                <option value="Volvo V40">Volvo V40</option>
+                <option value="volvo XC60<">Volvo XC60</option>
+                <option value="Volvo XC90">Volvo XC90</option>
+            </select>
+        </div>
+
+        <div class="my-4">
+            <h5 class="form-label">How old is the car</h5>
+            <input required type="number" name="year" class="form-control" step="0.1">
+        </div>
+
+        <div class="my-4">
+            <h5 class="form-label">Kilometers Driven</h5>
+            <input required type="number" name="Kilometers" class="form-control" step="0.01">
+        </div>
+
+        <div class="my-4">
+            <h5 class="form-label" style="display: inline">Owner Type</h5>
+            <p style="display: inline ">(Please select)</p>
+            <select name="Owner" required name="cars" class="form-select mt-2">
+                <option value="1" selected>First Hand</option>
+                <option value="2">Second Hand</option>
+                <option value="3">Third Hand</option>
+                <option value="4">Fourth and above</option>
+            </select>
+        </div>
+
+        <div class="my-4">
+            <h5 class="form-label">Mileage</h5>
+            <input name="mileage" type="number" required class="form-control" step="0.01" placeholder="in kmpl">
+        </div>
+
+        <div class="my-4">
+            <h5 class="form-label">Engine</h5>
+            <input name="engine" type="number" required class="form-control" step="0.01" placeholder="in CC"
+                list="engine-list">
+            <datalist id="engine-list">
+            </datalist>
+        </div>
+
+        <div class="my-4">
+            <h5 class="form-label">Power</h5>
+            <input name="power" type="number" required class="form-control" step="0.01" placeholder="in bhp"
+                list="power-list">
+            <datalist id="power-list">
+            </datalist>
+        </div>
+
+        <div class="my-4">
+            <h5 class="form-label">Number of seats</h5>
+            <input name="seats" required type="number" class="form-control">
+        </div>
+
+
+        <div class="my-4">
+            <h5 class="form-label" style="display: inline">Location</h5>
+            <p style="display: inline ">(Please select the nearest location)</p>
+            <select name="location" required name="cars" class="form-select mt-2">
+                <option value="Bangalore" selected>Bangalore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Kochi">Kochi</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Pune">Pune</option>
+            </select>
+        </div>
+
+        <div class="my-4">
+            <h5 class="form-label" style="display: inline">Fuel Type</h5>
+            <p style="display: inline ">(Please select)</p>
+            <select name="fuel" required name="cars" class="form-select mt-2">
+                <option value="Petrol" selected>Petrol</option>
+                <option value="Diesel"> Diesel</option>
+                <option value="LPG">LPG</option>
+                <option value="CNG"> CNG</option>
+            </select>
+        </div>
+
+        <div class="text-center pb-5">
+            <button type="submit" class="btn btn-primary px-5 py-2 mt-3">Predict</button>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+<script>
+
+    car_engine = {
+        'Maruti Wagon': [998.0, 1061.0, 1197.0],
+        'Hyundai Creta': [1582.0, 1396.0, 1591.0],
+        'Honda Jazz': [1199.0, 1498.0, 1198.0],
+        'Maruti Ertiga': [1248.0, 1373.0, 1462.0],
+        'Audi A4': [1968.0, 2967.0, 1984.0, 1781.0, 1395.0, 3197.0, 1798.0],
+        'Hyundai EON': [814.0, 998.0],
+        'Nissan Micra': [1461.0, 1198.0],
+        'Toyota Innova': [2755.0, 2494.0, 2694.0, 2393.0, 1998.0],
+        'Volkswagen Vento': [1598.0, 1498.0, 1197.0],
+        'Tata Indica': [1248.0, 1396.0, 1405.0, 1193.0],
+        'Maruti Ciaz': [1462.0, 1373.0, 1248.0],
+        'Honda City': [1497.0, 1498.0, 1493.0, 1343.0],
+        'Maruti Swift': [1248.0, 1197.0, 1298.0],
+        'Land Rover': [2179.0, 1999.0, 4367.0, 2993.0, 2720.0],
+        'Mitsubishi Pajero': [2477.0, 2835.0],
+        'Honda Amaze': [1498.0, 1198.0, 1199.0],
+        'Renault Duster': [1461.0, 1598.0],
+        'Mercedes-Benz New': [2143.0, 1796.0, 2148.0, 1950.0, 1991.0],
+        'BMW 3': [1995.0, 1997.0, 2996.0, 2497.0, 2993.0],
+        'Maruti S': [1248.0, 1598.0],
+        'Audi A6': [1984.0, 2698.0, 1968.0, 1798.0, 2967.0, 2773.0],
+        'Hyundai i20': [1197.0, 1396.0],
+        'Maruti Alto': [998.0, 796.0, 1061.0],
+        'Honda WRV': [1199.0],
+        'Toyota Corolla': [1798.0, 1794.0, 1364.0],
+        'Mahindra Ssangyong': [2696.0],
+        'Maruti Vitara': [1248.0],
+        'Mahindra KUV': [1198.0],
+        'Mercedes-Benz M-Class': [2987.0, 2143.0],
+        'Volkswagen Polo': [1199.0, 1598.0, 1498.0, 1198.0, 1197.0, 999.0, 1798.0],
+        'Tata Nano': [624.0],
+        'Hyundai Elantra': [1999.0, 1991.0, 1582.0, 1797.0],
+        'Hyundai Xcent': [1120.0, 1197.0, 1186.0],
+        'Mahindra Thar': [2498.0, 2523.0],
+        'Hyundai Grand': [1197.0, 1120.0, 1186.0],
+        'Renault KWID': [799.0, 999.0],
+        'Hyundai i10': [1197.0, 1086.0],
+        'Nissan X-Trail': [1995.0],
+        'Maruti Zen': [998.0, 993.0, 1061.0],
+        'Ford Figo': [1399.0, 1196.0, 1498.0, 1499.0],
+        'Mercedes-Benz C-Class': [1950.0],
+        'Porsche Cayenne': [4806.0, 2967.0, 2995.0, 4134.0],
+        'Mahindra XUV500': [2179.0, 1997.0],
+        'Nissan Terrano': [1461.0, 1598.0],
+        'Honda Brio': [1198.0],
+        'Ford Fiesta': [1399.0, 1596.0, 1388.0, 1498.0],
+        'Hyundai Santro': [1086.0, 999.0],
+        'Tata Zest': [1193.0, 1248.0],
+        'Maruti Ritz': [1248.0, 1197.0],
+        'BMW 5': [1995.0, 2497.0, 2993.0, 2495.0, 2996.0, 2979.0],
+        'Toyota Fortuner': [2982.0, 2755.0],
+        'Ford Ecosport': [1498.0, 999.0, 1499.0],
+        'Hyundai Verna': [1493.0, 1582.0, 1591.0, 1599.0, 1396.0],
+        'Datsun GO': [1198.0],
+        'Maruti Omni': [796.0],
+        'Toyota Etios': [1197.0, 1364.0, 1496.0],
+        'Jaguar XF': [2993.0, 1999.0, 2179.0],
+        'Maruti Eeco': [1196.0],
+        'Honda Civic': [1799.0],
+        'Volvo V40': [1984.0, 1969.0],
+        'Mercedes-Benz B': [2143.0, 1595.0, 2147.0],
+        'Mahindra Scorpio': [2179.0, 1997.0, 2609.0, 2523.0],
+        'Honda CR-V': [2354.0, 1997.0],
+        'Mercedes-Benz SLC': [2996.0],
+        'BMW 1': [1995.0],
+        'Chevrolet Beat': [1199.0, 936.0],
+        'Skoda Rapid': [1498.0, 1598.0],
+        'Audi RS5': [2894.0],
+        'Mercedes-Benz S': [5461.0, 2987.0, 3498.0],
+        'Skoda Superb': [1968.0, 1798.0, 2496.0, 3597.0, 2771.0],
+        'BMW X5': [2993.0],
+        'Mercedes-Benz GLC': [2143.0, 2996.0],
+        'Mini Countryman': [1998.0],
+        'Chevrolet Optra': [1598.0, 1991.0, 1599.0],
+        'Renault Lodgy': [1461.0],
+        'Mercedes-Benz E-Class': [2143.0, 1950.0, 2987.0, 2497.0, 1796.0, 2148.0, 3498.0, 2997.0, 2996.0, 2496.0, 1991.0],
+        'Maruti Baleno': [1197.0, 1248.0, 1590.0, 998.0],
+        'Skoda Laura': [1896.0, 1968.0, 1798.0],
+        'Mahindra NuvoSport': [1493.0],
+        'Skoda Fabia': [1390.0, 1598.0, 1198.0, 1422.0, 1199.0],
+        'Tata Indigo': [1193.0, 1405.0, 1396.0],
+        'Audi Q3': [1968.0],
+        'Skoda Octavia': [1798.0, 1968.0, 1984.0, 1395.0, 1896.0],
+        'Audi A8': [2967.0],
+        'Mahindra Verito': [1461.0],
+        'Mini Cooper': [1998.0, 1598.0, 1496.0],
+        'Hyundai Santa': [2199.0],
+        'BMW X1': [1995.0],
+        'Hyundai Accent': [1493.0, 1495.0, 1599.0],
+        'Hyundai Tucson': [1995.0, 1999.0, 1991.0],
+        'Mercedes-Benz GLE': [2987.0, 2143.0],
+        'Maruti A-Star': [998.0],
+        'Fiat Grande': [1248.0, 1172.0, 1368.0],
+        'BMW X3': [2993.0, 1995.0],
+        'Ford EcoSport': [999.0, 1498.0, 1499.0, 1497.0],
+        'Audi Q7': [2967.0, 4134.0],
+        'Volkswagen Jetta': [1896.0, 1968.0, 1390.0],
+        'Mercedes-Benz GLA': [2143.0, 1991.0],
+        'Maruti Celerio': [998.0, 793.0],
+        'Tata Sumo': [2956.0, 1978.0, 1948.0],
+        'Honda Accord': [2354.0, 2997.0],
+        'BMW 6': [2993.0, 4395.0],
+        'Tata Manza': [1248.0, 1368.0],
+        'Chevrolet Spark': [995.0],
+        'Mini Clubman': [1998.0],
+        'Nissan Teana': [2496.0, 2349.0],
+        'Maruti 800': [796.0],
+        'Honda BRV': [1497.0],
+        'Jaguar XE': [1999.0],
+        'Tata Xenon': [2179.0],
+        'Audi A3': [1968.0],
+        'Mercedes-Benz GL-Class': [2987.0],
+        'Honda BR-V': [1497.0, 1498.0],
+        'Volvo S80': [2400.0],
+        'Renault Captur': [1461.0],
+        'Chevrolet Enjoy': [1399.0, 1248.0],
+        'Mahindra Bolero': [2523.0, 1493.0],
+        'Audi Q5': [1968.0, 2967.0, 1984.0],
+        'Mitsubishi Cedia': [1999.0],
+        'Maruti S-Cross': [1248.0],
+        'Skoda Yeti': [1968.0],
+        'Ford Endeavour': [2953.0, 3198.0, 2499.0, 2198.0],
+        'Mercedes-Benz GLS': [2987.0],
+        'Mercedes-Benz A': [2143.0, 1595.0],
+        'Maruti SX4': [1586.0, 1248.0, 1598.0],
+        'Toyota Camry': [2362.0, 2494.0, 2487.0],
+        'Honda Mobilio': [1497.0, 1498.0],
+        'Fiat Linea': [1368.0, 1248.0],
+        'Audi TT': [1984.0],
+        'Mahindra Renault': [1461.0, 1390.0],
+        'Jeep Compass': [1956.0, 1368.0],
+        'Ford Ikon': [1299.0, 1399.0, 1597.0],
+        'Chevrolet Sail': [1199.0, 1248.0],
+        'Mahindra Quanto': [1493.0],
+        'Chevrolet Aveo': [1150.0, 1399.0, 1598.0],
+        'Mahindra Xylo': [2498.0, 2179.0, 2489.0],
+        'Maruti Esteem': [1298.0],
+        'Tata Safari': [2179.0],
+        'Maruti Ignis': [1197.0, 1248.0],
+        'Jaguar XJ': [1999.0, 2993.0, 5000.0],
+        'Nissan Sunny': [1498.0, 1461.0],
+        'Mercedes-Benz SLK-Class': [3498.0, 5461.0],
+        'Volkswagen Passat': [1968.0, 1798.0],
+        'Maruti Dzire': [1197.0, 1248.0],
+        'Chevrolet Cruze': [1991.0, 1998.0],
+        'Renault Koleos': [1995.0],
+        'Toyota Qualis': [2446.0],
+        'Volkswagen Ameo': [1498.0, 1198.0],
+        'Maruti Grand': [1995.0, 2393.0],
+        'Datsun redi-GO': [799.0],
+        'Smart Fortwo': [799.0],
+        'Mitsubishi Outlander': [2360.0],
+        'Porsche Cayman': [3436.0],
+        'Mercedes-Benz CLA': [2143.0, 1991.0],
+        'Volvo XC60': [2400.0, 1985.0, 1984.0],
+        'Tata New': [2179.0, 2092.0],
+        'Porsche Boxster': [2706.0],
+        'Mahindra XUV300': [1497.0],
+        'Tata Hexa': [2179.0],
+        'Tata Tiago': [1199.0, 1047.0],
+        'BMW 7': [2979.0, 2993.0, 4395.0],
+        'Fiat Avventura': [1248.0],
+        'Tata Tigor': [1199.0, 1047.0],
+        'Volvo S60': [1969.0, 1984.0, 1985.0, 2400.0],
+        'Ambassador Classic': [1489.0],
+        'Volkswagen Beetle': [1984.0],
+        'Fiat Petra': [1242.0],
+        'Hyundai Getz': [1493.0, 1341.0],
+        'Audi A7': [2967.0],
+        'Hyundai Elite': [1197.0, 1396.0],
+        'Ford Aspire': [1498.0],
+        'Volkswagen Tiguan': [1968.0],
+        'Chevrolet Captiva': [1991.0],
+        'Fiat Punto': [1172.0],
+        'Mahindra TUV': [1493.0],
+        'BMW X6': [2993.0],
+        'Tata Bolt': [1248.0, 1193.0],
+        'Nissan Evalia': [1461.0],
+        'Renault Scala': [1461.0, 1498.0],
+        'Mahindra Jeep': [2498.0, 2112.0],
+        'Hyundai Sonata': [1991.0, 2359.0, 1997.0],
+        'Ford Freestyle': [1194.0],
+        'Mahindra Logan': [1461.0, 1390.0],
+        'Chevrolet Tavera': [2499.0],
+        'Volvo XC90': [2400.0],
+        'Renault Pulse': [1461.0, 1198.0],
+        'Mitsubishi Montero': [3200.0],
+        'Porsche Panamera': [2967.0, 4806.0],
+        'Volkswagen CrossPolo': [1498.0],
+        'Renault Fluence': [1461.0, 1997.0],
+        'Tata Venture': [1405.0],
+        'Tata Nexon': [1497.0, 1198.0],
+        'Isuzu MUX': [2999.0],
+        'Toyota Platinum': [1364.0],
+        'Mercedes-Benz R-Class': [2987.0, 3498.0],
+        'Mercedes-Benz CLS-Class': [3498.0],
+        'ISUZU D-MAX': [2499.0],
+        'Mercedes-Benz S-Class': [2987.0, 2925.0],
+        'Mitsubishi Lancer': [1468.0, 1998.0],
+        'Ford Classic': [1399.0],
+        'Datsun Redi': [799.0],
+        'Ford Mustang': [4951.0],
+        'Ford Fusion': [1399.0],
+        'Fiat Siena': [1242.0],
+        'Maruti 1000': [970.0],
+        'Mercedes-Benz SL-Class': [5461.0],
+        'BMW Z4': [2979.0],
+        'Force One': [2200.0, 2149.0],
+        'Maruti Versa': [1298.0],
+        'Honda WR-V': [1199.0],
+        'Bentley Continental': [5998.0],
+        'Lamborghini Gallardo': [5204.0],
+        'Jaguar F': [5000.0]
+    }
+
+    car_power = {
+        'Maruti Wagon': [58.16, 64.0, 67.1, 67.0, 67.04, 58.2, 57.5, 81.8],
+        'Hyundai Creta': [126.2, 88.7, 121.3],
+        'Honda Jazz': [88.7, 98.6, 88.8, 90.0],
+        'Maruti Ertiga': [88.76, 88.5, 93.7, 88.8, 80.46, 80.9, 88.7, 91.1, 103.0],
+        'Audi A4': [140.8, 174.33, 140.0, 241.4, 147.51, 187.74, 132.0, 163.2, 112.0, 167.62],
+        'Hyundai EON': [55.2, 68.05, 55.0],
+        'Nissan Micra': [63.1, 75.94, 75.0, 67.04, 76.0, 112.0, 63.12],
+        'Toyota Innova': [171.5, 102.0, 163.7, 147.8, 132.0, 100.6, 100.0],
+        'Volkswagen Vento': [103.6, 103.5, 103.2, 108.5, 105.0],
+        'Tata Indica': [74.0, 69.0, 53.5, 75.0, 112.0, 65.3, 62.0, 70.0, 68.0, 48.21, 88.8, 52.8, 60.0],
+        'Maruti Ciaz': [103.25, 91.1, 88.5, 91.2],
+        'Honda City': [116.3, 78.0, 117.3, 98.6, 118.0, 100.0, 90.0, 116.4],
+        'Maruti Swift': [74.0, 75.0, 81.8, 112.0, 73.9, 83.14, 85.8, 85.0, 88.2, 83.11],
+        'Land Rover': [187.7, 115.0, 177.0, 147.51, 308.0, 187.74, 180.0, 255.0, 148.31, 241.4, 147.5, 335.3, 190.0],
+        'Mitsubishi Pajero': [175.56, 107.2, 116.9, 118.6, 178.0],
+        'Honda Amaze': [98.6, 86.7, 88.76, 86.76],
+        'Renault Duster': [83.8, 108.45, 102.57, 102.53],
+        'Mercedes-Benz New': [167.62, 186.0, 170.0, 178.0, 181.43, 201.15, 184.0, 181.03, 204.0, 181.04],
+        'BMW 3': [190.0, 181.0, 154.0, 184.0, 170.0, 245.0, 187.74, 254.0, 215.0],
+        'Maruti S': [88.5, 118.0],
+        'Audi A6': [177.01, 179.5, 187.74, 174.33, 241.38, 201.0],
+        'Hyundai i20': [80.0, 82.9, 90.0, 82.85, 88.73, 81.83, 81.86, 88.8, 98.6, 88.76, 100.0],
+        'Maruti Alto': [67.1, 46.3, 47.3, 47.0, 38.4, 40.3, 58.2],
+        'Honda WRV': [88.7],
+        'Toyota Corolla': [138.1, 138.03, 125.0, 87.2, 132.0, 86.79, 138.0],
+        'Mahindra Ssangyong': [184.0, 162.0],
+        'Maruti Vitara': [88.5],
+        'Mahindra KUV': [82.0, 77.0],
+        'Mercedes-Benz M-Class': [254.8, 165.0, 203.2, 224.0, 224.34],
+        'Volkswagen Polo': [73.9, 103.5, 103.6, 88.8, 88.0, 74.0, 75.0, 189.0],
+        'Tata Nano': [37.5, 37.48, 35.0],
+        'Hyundai Elantra': [149.92, 112.2, 126.24, 126.2, 147.5],
+        'Hyundai Xcent': [71.0, 82.0, 81.86, 73.97, 71.01],
+        'Mahindra Thar': [105.0, 63.0],
+        'Hyundai Grand': [82.0, 81.86, 70.0, 73.97],
+        'Renault KWID': [53.3, 67.0],
+        'Hyundai i10': [78.9, 68.05, 66.7, 80.0],
+        'Nissan X-Trail': [147.6],
+        'Maruti Zen': [67.1, 60.0, 64.0],
+        'Ford Figo': [68.0, 68.05, 86.8, 99.0, 70.0, 110.4, 70.02, 68.1, 110.5],
+        'Mercedes-Benz C-Class': [194.0],
+        'Porsche Cayenne': [500.0, 240.0, 550.0, 340.0, 245.0, 382.0],
+        'Mahindra XUV500': [140.0, 155.0],
+        'Nissan Terrano': [108.5, 83.8, 102.5, 83.14],
+        'Honda Brio': [86.8],
+        'Ford Fiesta': [112.0, 68.0, 67.0, 88.7, 101.0, 90.0, 89.75],
+        'Hyundai Santro': [112.0, 62.1, 62.0, 68.0],
+        'Tata Zest': [88.7, 74.0, 88.8],
+        'Maruti Ritz': [73.94, 85.8, 73.9],
+        'BMW 5': [218.0, 215.0, 190.0, 177.0, 258.0, 150.0, 235.0, 187.74, 306.0, 265.0],
+        'Toyota Fortuner': [168.5, 171.0, 169.0, 174.5, 168.7],
+        'Ford Ecosport': [89.84, 98.96, 123.24, 110.0, 123.37],
+        'Hyundai Verna': [110.0, 126.32, 126.2, 121.3, 103.2, 126.3, 121.4, 88.76, 105.5, 88.7],
+        'Datsun GO': [67.0, 67.06],
+        'Maruti Omni': [35.0, 34.2],
+        'Toyota Etios': [78.9, 67.06, 67.05, 67.04, 88.73, 112.0, 88.7, 88.8, 67.1],
+        'Jaguar XF': [270.9, 177.0, 187.7],
+        'Maruti Eeco': [73.0, 63.0],
+        'Honda Civic': [130.0, 130.2, 130.3],
+        'Volvo V40': [150.0],
+        'Mercedes-Benz B': [107.3, 120.7],
+        'Mahindra Scorpio': [120.0, 116.6, 75.0],
+        'Honda CR-V': [152.0, 141.1, 187.4, 153.86, 158.8, 112.0],
+        'Mercedes-Benz SLC': [362.07],
+        'BMW 1': [143.0],
+        'Chevrolet Beat': [76.8, 57.6, 79.4, 56.3],
+        'Skoda Rapid': [103.52, 103.6, 103.5, 108.4],
+        'Audi RS5': [444.0],
+        'Mercedes-Benz S': [362.9, 282.0, 364.9, 210.0],
+        'Skoda Superb': [138.1, 157.75, 177.46, 160.0, 163.2, 262.6, 157.8, 193.1, 174.5, 161.6, 138.03],
+        'BMW X5': [258.0, 235.0, 245.0],
+        'Mercedes-Benz GLC': [170.0, 367.0, 168.0],
+        'Mini Countryman': [112.0],
+        'Chevrolet Optra': [102.5, 123.7, 104.0, 112.0],
+        'Renault Lodgy': [108.5],
+        'Mercedes-Benz E-Class': [201.1, 203.0, 204.0, 191.34, 198.5, 185.0, 170.0, 258.0, 265.0, 210.0, 157.7, 112.0, 194.0, 272.0, 231.1, 333.0, 261.5, 184.0, 181.03],
+        'Maruti Baleno': [83.1, 74.0, 94.0, 112.0, 100.0],
+        'Skoda Laura': [106.0, 105.0, 138.1, 157.8, 108.5, 112.0],
+        'Mahindra NuvoSport': [100.0],
+        'Skoda Fabia': [85.0, 105.0, 75.0, 70.0, 73.9],
+        'Tata Indigo': [64.1, 70.0, 69.01, 65.0, 69.0, 55.23, 64.08, 99.6],
+        'Audi Q3': [174.33, 181.0, 184.0, 147.51, 150.0],
+        'Skoda Octavia': [177.5, 141.0, 227.0, 138.02, 66.0, 177.6, 90.0],
+        'Audi A8': [246.7],
+        'Mahindra Verito': [65.0, 64.1],
+        'Mini Cooper': [189.08, 122.0, 113.98, 181.0, 112.0],
+        'Hyundai Santa': [194.3],
+        'BMW X1': [184.0, 190.0, 177.0, 150.0],
+        'Hyundai Accent': [82.0, 94.0, 93.7],
+        'Hyundai Tucson': [183.0, 152.88, 112.0],
+        'Mercedes-Benz GLE': [254.79, 201.15],
+        'Maruti A-Star': [66.1],
+        'Fiat Grande': [76.0, 75.0, 67.0, 88.7],
+        'BMW X3': [258.0, 184.0, 190.0],
+        'Ford EcoSport': [123.24, 98.59, 110.4, 121.36, 98.96],
+        'Audi Q7': [241.4, 245.0, 335.2, 250.0],
+        'Volkswagen Jetta': [105.0, 112.0, 138.03, 138.1, 120.33],
+        'Mercedes-Benz GLA': [136.0, 183.0],
+        'Maruti Celerio': [67.04, 47.0, 58.33],
+        'Tata Sumo': [83.1, 83.8],
+        'Honda Accord': [177.6, 180.0, 142.0, 144.0, 218.0],
+        'BMW 6': [313.0, 450.0],
+        'Tata Manza': [88.8, 90.0, 88.76],
+        'Chevrolet Spark': [62.0, 62.1],
+        'Mini Clubman': [192.0],
+        'Nissan Teana': [179.5, 112.0],
+        'Maruti 800': [37.0],
+        'Honda BRV': [117.3],
+        'Jaguar XE': [246.74, 177.0],
+        'Tata Xenon': [138.03],
+        'Audi A3': [143.0],
+        'Mercedes-Benz GL-Class': [224.0, 254.8],
+        'Honda BR-V': [117.3, 98.6],
+        'Volvo S80': [215.0],
+        'Renault Captur': [108.45],
+        'Chevrolet Enjoy': [98.79, 73.8, 73.74, 98.82],
+        'Mahindra Bolero': [62.1, 63.0, 112.0, 70.0],
+        'Audi Q5': [174.3, 167.6, 241.4, 236.0, 208.0],
+        'Mitsubishi Cedia': [114.0],
+        'Maruti S-Cross': [88.5],
+        'Skoda Yeti': [108.49, 108.5, 138.08],
+        'Ford Endeavour': [156.0, 197.2, 141.0, 197.0, 158.0, 143.0, 153.86, 157.7, 112.0],
+        'Mercedes-Benz GLS': [258.0],
+        'Mercedes-Benz A': [136.0, 107.3, 120.7, 122.0],
+        'Maruti SX4': [103.3, 103.2, 88.5, 104.68, 88.8, 118.0, 88.73, 85.7],
+        'Toyota Camry': [164.7, 158.2, 157.7, 175.67, 178.4],
+        'Honda Mobilio': [117.3, 98.6],
+        'Fiat Linea': [112.0, 90.0, 93.0, 91.7, 75.0, 112.4, 91.2, 92.0],
+        'Audi TT': [207.8, 226.6],
+        'Mahindra Renault': [65.0, 75.0],
+        'Jeep Compass': [170.0, 160.0],
+        'Ford Ikon': [70.0, 68.0, 92.0],
+        'Chevrolet Sail': [82.5, 74.0, 76.9, 82.4],
+        'Mahindra Quanto': [100.0],
+        'Chevrolet Aveo': [76.0, 92.7, 74.9, 102.0],
+        'Mahindra Xylo': [112.0, 118.3, 93.7, 95.0],
+        'Maruti Esteem': [85.0, 112.0],
+        'Tata Safari': [154.0, 138.1, 138.03, 148.0],
+        'Maruti Ignis': [81.8, 74.0],
+        'Jaguar XJ': [237.4, 270.88, 271.23, 301.73, 503.0],
+        'Nissan Sunny': [99.6, 84.8, 97.7, 97.6],
+        'Mercedes-Benz SLK-Class': [306.0, 421.0],
+        'Volkswagen Passat': [140.0, 167.7, 160.0],
+        'Maruti Dzire': [81.8, 73.75, 74.0],
+        'Chevrolet Cruze': [147.9, 163.7],
+        'Renault Koleos': [148.0],
+        'Toyota Qualis': [75.0, 112.0],
+        'Volkswagen Ameo': [108.62, 73.75, 108.495, 74.0],
+        'Maruti Grand': [163.5],
+        'Datsun redi-GO': [53.64, 53.0],
+        'Smart Fortwo': [112.0],
+        'Mitsubishi Outlander': [170.0],
+        'Porsche Cayman': [112.0],
+        'Mercedes-Benz CLA': [136.0, 183.0],
+        'Volvo XC60': [215.0, 163.0, 181.0],
+        'Tata New': [138.1, 138.0, 127.0],
+        'Porsche Boxster': [265.0],
+        'Mahindra XUV300': [115.0],
+        'Tata Hexa': [153.86],
+        'Tata Tiago': [84.0, 83.83, 69.0],
+        'BMW 7': [321.0, 258.0, 320.0, 261.49, 402.0],
+        'Fiat Avventura': [91.72],
+        'Tata Tigor': [84.0, 69.0],
+        'Volvo S60': [190.0, 181.0, 163.0, 215.0],
+        'Ambassador Classic': [35.5],
+        'Volkswagen Beetle': [114.4],
+        'Fiat Petra': [112.0],
+        'Hyundai Getz': [110.0, 83.0, 61.0, 82.9],
+        'Audi A7': [241.4],
+        'Hyundai Elite': [81.86, 88.76],
+        'Ford Aspire': [99.0],
+        'Volkswagen Tiguan': [141.0],
+        'Chevrolet Captiva': [147.9],
+        'Fiat Punto': [67.0],
+        'Mahindra TUV': [100.0],
+        'BMW X6': [306.0, 241.0, 308.43],
+        'Tata Bolt': [74.0, 88.7],
+        'Nissan Evalia': [84.8],
+        'Renault Scala': [84.8, 97.6, 99.6],
+        'Mahindra Jeep': [112.0],
+        'Hyundai Sonata': [142.0, 198.25, 134.0],
+        'Ford Freestyle': [94.68],
+        'Mahindra Logan': [65.0, 75.0],
+        'Chevrolet Tavera': [78.0, 80.0],
+        'Volvo XC90': [200.0],
+        'Renault Pulse': [63.12, 74.93, 74.96],
+        'Mitsubishi Montero': [199.3],
+        'Porsche Panamera': [300.0, 250.0, 394.3],
+        'Volkswagen CrossPolo': [88.73, 88.5],
+        'Renault Fluence': [78.0, 108.5, 135.1],
+        'Tata Venture': [70.0],
+        'Tata Nexon': [108.5],
+        'Isuzu MUX': [174.57],
+        'Toyota Platinum': [67.05],
+        'Mercedes-Benz R-Class': [261.0, 272.0],
+        'Mercedes-Benz CLS-Class': [271.72],
+        'ISUZU D-MAX': [134.0],
+        'Mercedes-Benz S-Class': [210.0, 281.61],
+        'Mitsubishi Lancer': [85.8, 68.0],
+        'Ford Classic': [67.0],
+        'Datsun Redi': [53.0],
+        'Ford Mustang': [395.0],
+        'Ford Fusion': [68.0],
+        'Fiat Siena': [112.0],
+        'Maruti 1000': [112.0],
+        'Mercedes-Benz SL-Class': [387.3],
+        'BMW Z4': [306.0],
+        'Force One': [139.01, 139.07],
+        'Maruti Versa': [83.1],
+        'Honda WR-V': [88.7],
+        'Bentley Continental': [552.0],
+        'Lamborghini Gallardo': [560.0],
+        'Jaguar F': [488.1]
+    }
+
+
+
+    const change = () => {
+        car_name = (document.getElementById("car").value)
+
+        if (car_name in car_engine) {
+            let ele = document.getElementById("engine-list")
+            ele.innerHTML = ''
+            list = car_engine[car_name]
+            for (i in list) {
+                ele.innerHTML += ('<option>' + eval(list[i]) + '</option>')
+            }
+        }
+
+        if (car_name in car_power) {
+            let ele = document.getElementById("power-list")
+            ele.innerHTML = ''
+            list = car_power[car_name]
+            for (i in list) {
+                ele.innerHTML += ('<option>' + eval(list[i]) + '</option>')
+            }
+        }
+
+    }
+</script>
+
+
+
+
+{% endblock %}

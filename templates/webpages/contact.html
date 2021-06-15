@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="content my-5">
+
+    <div class="container">
+        <div class="row align-items-stretch no-gutters contact-wrap">
+            <div class="col-md-8">
+                <div class="form h-100">
+                    <h3>Feel free to contact us</h3>
+
+                    <form class="mb-5" method="POST" action="{% url 'contactUs' %}">
+                        {% csrf_token %}
+
+                        {% if user.is_authenticated %}
+                        <input type="hidden" name="user_id" value="{{user.id}}">
+                        {% else %}
+                        <input type="hidden" name="user_id" value="00">
+                        {% endif %}
+
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label class="col-form-label"> First Name *</label>
+                                <input type="text" class="form-control" name="first_name" placeholder="First name">
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                                <label class="col-form-label">Last name *</label>
+                                <input type="text" class="form-control" name="last_name" placeholder="Last name">
+                            </div>
+                            <div class="col-md-6 form-group mb-3">
+                                <label class="col-form-label">Email *</label>
+                                <input type="email" class="form-control" name="email" placeholder="Your email">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label class="col-form-label">Phone Number</label>
+                                <input type="number" class="form-control" name="phone_number" placeholder="Phone #">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 form-group mb-5">
+                                <label for="message" class="col-form-label">Message *</label>
+                                <textarea class="form-control" name="message" cols="30" rows="4"
+                                    placeholder="Write your message"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <input type="submit" value="Send Message" class="btn btn-primary rounded-0 py-2 px-4">
+                                <span class="submitting"></span>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="contact-info text-light lead bg-danger p-3">
+                    <h3>Contact Information</h3>
+
+                    <ul class=" list-unstyled>
+                    <li class=" d-flex">
+                        <span class="wrap-icon icon-room mr-3"></span>
+                        <span class="text">100 Feet Ring Road, Banashankari Stage III, Dwaraka Nagar, Banashankari,
+                            Bengaluru, Karnataka 560085</span>
+                        </li>
+                        <li class="d-flex">
+                            <span class="wrap-icon icon-phone mr-3"></span>
+                            <span class="text">8217332098</span>
+                        </li>
+                        <li class="d-flex">
+                            <span class="wrap-icon icon-envelope mr-3"></span>
+                            <span class="text">adhadukchand@gmail.com</span>
+                        </li>
+                        <li class="d-flex">
+                            <span class="wrap-icon icon-envelope mr-3"></span>
+                            <span class="text">maneeshsriram123@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endif %}
+{% endblock %}
