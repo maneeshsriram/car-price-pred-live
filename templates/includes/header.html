@@ -19,13 +19,23 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'contact' %}">Contact Us</a>
                 </li>
                 {% endif %}
+
             </ul>
+
+
 
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
                 <li class="nav-item ml-auto px-3">
                     <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
                 </li>
+                {% if user.get_username == "maneesh" %}
+                <li class="nav-item px-3">
+                    <a class="nav-link active rounded btn btn-primary" aria-current="page" href="admin/">
+                        Admin {{name}}
+                    </a>
+                </li>
+                {% endif %}
                 {% else %}
                 <li class="nav-item px-3">
                     <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Signup</a>
